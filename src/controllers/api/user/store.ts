@@ -16,5 +16,5 @@ class AdminUserCreateAction extends ActionApi {
         }
     }
 }
-const articleGet = new AdminUserCreateAction().handle();
-export { articleGet }
+const storeLogin = new AdminUserCreateAction().handle();
+export { storeLogin }

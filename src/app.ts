@@ -3,23 +3,24 @@ import bodyParser from "body-parser";
 import processEnv from "dotenv";
 import cookieParser from "cookie-parser";
 import session from "express-session";
-import morgan from "morgan";
 import { redis } from "./db/redis";
 import connectRedis from "connect-redis";
 import RouterAdaptor from "./adaptors/router";
+import { clientRouter } from "./router/api/index";
 const app = express();
+const RedisStore = connectRedis(session);
+processEnv.config();
+
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
+
+
+
 app.use(cookieParser(process.env.COOKIE_SECRET));
-import { clientRouter } from "./router/api/index";
-
-
-const RedisStore = connectRedis(session)
-processEnv.config();
-app.use(morgan("dev"));
-
-
-
 app.use(session({
     store: new RedisStore({
         client: redis as any,

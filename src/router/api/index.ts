@@ -1,8 +1,9 @@
 import { RouterGroup } from "../../utils/routerGroup";
-import { storeLogin } from "../../controllers/api/user/store";
+import { registerUser } from "../../controllers/api/user/store";
+import CheckToken from "../../middleware/check-token";
 
 export const clientRouter: RouterGroup = {
     router: (route) => {
-        route.post("/login", storeLogin)
+        route.post("/register", new CheckToken().handle(), registerUser)
     }
 }

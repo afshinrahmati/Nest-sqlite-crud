@@ -1,18 +1,12 @@
 import mongoose, { Document, Model, model, Schema } from "mongoose";
-export declare enum Permission {
-    R = "READ",
-    RW = "READ_WRITE",
-}
-export declare type accessType = {
-    [key: string]: {
-        active: boolean;
-        permission: Permission;
-    };
-};
+import mongoosePagination from "mongoose-paginate";
+import { ActivationStatus } from "../type/global";
+
 declare enum Role {
     admin = "ADMIN",
     client = "CLIENT"
 }
+
 
 export interface IUser extends Partial<Document> {
     access: {
@@ -71,6 +65,6 @@ const userSchema: Schema = new Schema({
 });
 userSchema.plugin(mongoosePagination);
 
-const User: Model<IUser> = model("users", userSchema);
+const User: Model<any> = model("users", userSchema);
 
 export default User;

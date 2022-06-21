@@ -1,10 +1,18 @@
 import { Request, Response } from "express";
+import { ResponseType } from "../type/response";
+import ClientResponse from "./clientResponse";
 
 export class ActionApi {
-    private sessions: any;
+   
+    protected makeCreateObject(body: any) {
 
-    async checkToken(token: string) {
-        return true
+        const createObj: ResponseType = {
+            status: 200,
+            message: "successful",
+            data: [body]
+        };
+        return new ClientResponse(createObj)
+
     }
 }
 

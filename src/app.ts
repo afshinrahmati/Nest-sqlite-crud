@@ -37,11 +37,14 @@ app.use(session({
 const routerAdaptor = new RouterAdaptor();
 app.use("/v1.0", routerAdaptor.init(clientRouter));
 
-app.all('*', (req, res) => {
-    try {
-        return res.send("partials/page-404.pug")
-    } catch (error) {
-
+app.use( (err: any, req: any, res: any, next: any) => {
+    
+    
+    if (err) {
+        return res.json(err)
     }
-});
+
+    return res.send("partials/page-404.pug")
+})
+    
 export default app;

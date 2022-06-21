@@ -1,20 +1,23 @@
 import { ActionApi } from "../../../components/base-action";
 
 import { Request, Response, NextFunction } from "express";
+import ClientResponse from "../../../components/clientResponse";
+import { ResponseType } from "../../../type/response";
 
-class AdminUserCreateAction extends ActionApi {
+class RegisterUserAction extends ActionApi {
     handle() {
         return async (req: any, res: any) => {
             try {
-                req.session.user = "afshim"
-                console.log(req.body);
-                return res.send("85");
+                const { name } = req.body;
+                const val = this.makeCreateObject(name);
+                return res.send(val);
             } catch (e) {
                 console.log(e);
 
             }
         }
     }
+
 }
-const storeLogin = new AdminUserCreateAction().handle();
-export { storeLogin }
+const registerUser = new RegisterUserAction().handle();
+export { registerUser }

@@ -7,7 +7,7 @@ export class ActionApi {
     protected body: any;
     protected params: any;
     protected query: any;
-    private _data: any;
+    protected _data: any;
 
     setData(body: any, params: any, query: any) {
         this.body = Object.keys(body).length === 0 ? null : body;
@@ -23,14 +23,7 @@ export class ActionApi {
             this._data = date;
         }
     }
-    protected async validate() {
-        const validate = await register_validator.validate(this._data)
-        const result = {
-            error: validate.error ? true : false,
-            message: validate.error ? validate.error.details[0].message : null
-        }
-        return result;
-    }
+
 }
 
 // export declare abstract class Action<

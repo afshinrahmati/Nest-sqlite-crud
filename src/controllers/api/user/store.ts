@@ -28,7 +28,14 @@ class RegisterUserAction extends ActionApi {
             }
         }
     }
-
+    protected async validate() {
+        const validate = await register_validator.validate(this._data)
+        const result = {
+            error: validate.error ? true : false,
+            message: validate.error ? validate.error.details[0].message : null
+        }
+        return result;
+    }
 
 
 }

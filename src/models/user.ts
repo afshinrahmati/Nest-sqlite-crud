@@ -7,6 +7,10 @@ declare enum Role {
     client = "CLIENT"
 }
 
+declare enum status {
+    active = "ACTIVE",
+    inActive = "INACTIVE"
+}
 
 export interface IUser extends Partial<Document> {
     access: {
@@ -22,49 +26,41 @@ export interface IUser extends Partial<Document> {
     }
     password: string;
     store: number;
-    status: boolean;
+    status: status;
 }
 
 const userSchema: Schema = new Schema({
-    username: {
-        type: String,
-        required: true,
-        unique: true,
+    access: {
+        type: mongoose.Schema.Types.Mixed,
     },
-    password: {
-        type: String,
-        required: true,
-    },
-    store: {
-        type: Number,
+    firstName: {
+        type: String
     },
     role: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Role",
-        required: true,
+        type: Role,
+        index: true,
+
     },
-    status: {
-        type: ActivationStatus,
-        default: ActivationStatus.Active,
+    surname: {
+        type: String
     },
-    company: {
-        managerName: String,
-        companyName: String,
-        phone: String,
-        salesManagerName: String,
-        salesManagerMobile: String,
-        postalCode: String,
-        address: String,
-        explanation: String,
+    email: {
+        type: String,
+        unique: true
     },
-    client: {
-        name: String,
-        lastName: String,
-        mobile: String,
+    phoneNumber: {
+        type: String,
+        unique: true
     },
+    favorite: {
+        type: [String]
+    },
+    password: { type: String },
+    store: { type: Number },
+    status: { type: status }
 });
 userSchema.plugin(mongoosePagination);
 
-const User: Model<any> = model("users", userSchema);
+const Users: Model<any> = model("user", userSchema);
 
-export default User;
+export default Users;

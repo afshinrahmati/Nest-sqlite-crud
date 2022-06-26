@@ -7,9 +7,12 @@ export default class ClientResponse {
     message: string | undefined;
     data: Object | undefined = undefined;
 
-    constructor(val: ResponseType) {
-        this.status = val.status;
-        this.data = val.data;
-        this.message = val.message;
+    constructor(
+        status: number,
+        data?: any,
+        message?: any) {
+        this.status = status;
+        this.data = data;
+        this.message = message;
     }
 }

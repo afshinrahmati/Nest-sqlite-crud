@@ -38,6 +38,7 @@ const routerAdaptor = new RouterAdaptor();
 app.use("/v1.0", routerAdaptor.init(clientRouter));
 
 app.use( (err: any, req: any, res: any, next: any) => {
+    // console.log(err);
     
     
     if (err) {

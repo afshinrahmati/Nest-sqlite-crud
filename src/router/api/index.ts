@@ -1,3 +1,5 @@
+const validator = require('express-joi-validation').createValidator({});
+
 import { RouterGroup } from "../../utils/routerGroup";
 import { registerUser } from "../../controllers/api/user/store";
 import CheckToken from "../../middleware/check-token";

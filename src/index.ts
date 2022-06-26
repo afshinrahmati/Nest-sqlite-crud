@@ -12,7 +12,8 @@ const { SERVER_PORT, MOGOOSE_URL } = process.env;
 
     await mongoose
         .connect(`${MOGOOSE_URL}`)
-        .then(() => console.log(`\x1b[32m%s\x1b[0m`, "**** MONGO CONNECT ****"));
+        .then(() => console.log(`\x1b[32m%s\x1b[0m`, "**** MONGO CONNECT ****"))
+        .catch(() => console.log("eerro"))
     app.listen(SERVER_PORT, () =>
         console.log(`\x1b[31m%s\x1b[0m`, `Server is running on PORT ${SERVER_PORT}`)
     );

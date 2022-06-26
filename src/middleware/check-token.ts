@@ -9,11 +9,12 @@ export default class CheckToken extends Middleware {
     handle() {
         return async (req: any, res: Response, next: NextFunction) => {
             try {
+                const token = req.headers["token"];
 
-                const test = await this.checkToken("salaam");
+                const test = await this.checkToken("salam");
                 if (!test) {
                     throw "newError"
-                }
+                };
                 next();
             } catch (error) {
                 next(new ClientError(400, "LOCATION.province", `${error}`));

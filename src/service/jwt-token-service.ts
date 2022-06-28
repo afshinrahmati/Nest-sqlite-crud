@@ -18,11 +18,12 @@ class token {
         return { token }
     }
 
-    statusToken(token: string) {
-        return Jwt.verify(token, this.secretKey, (error, user: any): boolean => {
+    statusToken(token: string): any {
+        return Jwt.verify(token, this.secretKey, (error, user: any) => {
             if (error) return false
-            else return true
-        })
+            return true
+        });
+
     }
 
     informationToken(token: string) {

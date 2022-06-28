@@ -11,12 +11,9 @@ export default class CheckToken extends Middleware {
         return async (req: any, res: Response, next: NextFunction) => {
             try {
                 const token = req.headers["token"];
+                const status = jwtTokenService.status(token);
                 if (!token) return next(new ClientError(400, "token.error", `plese enter your token`));
-                jwtTokenService.status(token);
-                const test = await this.checkToken("salam");
-                if (!test) {
-                    throw "newError"
-                };
+                if (!status) return res.status(400).json(new ClientError(400, "token.status", `plese enter your token`));
                 next();
             } catch (error) {
                 next(new ClientError(400, "LOCATION.province", `${error}`));
@@ -25,15 +22,5 @@ export default class CheckToken extends Middleware {
         }
     }
 
-    private async checkToken(token: string): Promise<boolean> {
-        if (token === "salam") {
-            return true
 
-        } else {
-            return false
-
-        }
-
-
-    }
 }

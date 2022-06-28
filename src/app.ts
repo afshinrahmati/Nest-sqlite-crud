@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import session from "express-session";
 import { redis } from "./db/redis";
 import connectRedis from "connect-redis";
+import morgan from "morgan";
 import RouterAdaptor from "./adaptors/router";
 import { clientRouter } from "./router/api/index";
 const app = express();
@@ -13,6 +14,7 @@ processEnv.config();
 
 
 
+app.use(morgan('dev'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -37,15 +39,15 @@ app.use(session({
 const routerAdaptor = new RouterAdaptor();
 app.use("/v1.0", routerAdaptor.init(clientRouter));
 
-app.use( (err: any, req: any, res: any, next: any) => {
+app.use((err: any, req: any, res: any, next: any) => {
     // console.log(err);
-    
-    
+
+
     if (err) {
         return res.json(err)
     }
 
     return res.send("partials/page-404.pug")
 })
-    
+
 export default app;

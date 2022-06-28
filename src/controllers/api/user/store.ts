@@ -36,8 +36,6 @@ class RegisterUserAction extends ActionApi {
         }
         return result;
     }
-
-
 }
 const registerUser = new RegisterUserAction().handle();
 export { registerUser }

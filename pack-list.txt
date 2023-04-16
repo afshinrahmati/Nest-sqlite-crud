@@ -1,0 +1,2 @@
+nest new app OR .
+yarn add @nestjs/typeorm sqlite3 class-validator typeorm class-transformer

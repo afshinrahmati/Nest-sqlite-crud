@@ -77,3 +77,17 @@ Nest is [MIT licensed](LICENSE).
 Once you get into production you'll need to synchronize model changes into the database. Typically, it is unsafe to use synchronize: true for schema synchronization on production once you get data in your database. Here is where migrations come to help.
 A migration is just a single file with sql queries to update a database schema and apply new changes to an existing database.
 Let's say you already have a database and a post entity:
+
+## TypeOrm
+we have 2 structure  (Active Record): Entity Extend from  BaseEntity that we dont cant test and we dont have Injection and
+all use in BaseEntity and dont can use in User
+an other (Data Mapper):we dont have  extends BaseEntity and all time we call this with Injection and use this every where 
+and can call that with const userRepository = dataSource.getRepository(User) Or in router call @EntityRepository
+
+## save & create
+Save can be used to both create a new Record and update a existing record
+Whereas create is used to create a new record by providing all required field at one time.
+
+## Hooks
+save format like log table and dont use like object {email:"t",pass:7895} this is not hooks
+save() + remove() ==> use Hooks But insert() + update() + deleted() ==> dont use Hooks

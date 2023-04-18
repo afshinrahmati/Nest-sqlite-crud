@@ -91,3 +91,15 @@ Whereas create is used to create a new record by providing all required field at
 ## Hooks
 save format like log table and dont use like object {email:"t",pass:7895} this is not hooks
 save() + remove() ==> use Hooks But insert() + update() + deleted() ==> dont use Hooks
+
+## serialize(Show Data with world format) and deserialize your data
+Data serialization is the process of converting an object into a stream of bytes to more easily save or transmit it.
+why is it important?
+In some distributed systems, data and its replicas are stored in different partitions on multiple cluster members. If data is not present on the local member, the system will retrieve that data from another member. This requires serialization for use cases such as:
+
+Deserialization is the process of reconstructing a data structure or object from a series of bytes or a string in order to instantiate the object for consumption. This is the reverse process of serialization, i.e., converting a data structure or object into a series of bytes for storage or transmission across devices. To fetch an object state over a wire or read it from persistent storage, a system must be able to deserialize it from raw bytes.
+
+## exclude
+when user create and we return all data in response(serialize,transformer Data) we dont show password and we
+should use @Eclude in class class-transformer
+step2 ==> we can handel with custom. 1) create folder interceptors 2)create file serialize.intercepteor.ts

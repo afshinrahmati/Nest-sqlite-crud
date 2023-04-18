@@ -1,3 +1,4 @@
+import { Exclude } from 'class-transformer';
 import {
   AfterInsert,
   AfterUpdate,
@@ -12,10 +13,11 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column('varchar', { length: 255 })
+  @Column({ type: 'varchar', length: 255, default: 'o@gmail.com' })
   email: string;
 
   @Column('varchar', { length: 255 })
+  @Exclude()
   password: string;
 
   @AfterInsert()

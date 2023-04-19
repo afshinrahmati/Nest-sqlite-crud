@@ -115,3 +115,6 @@ step2 ==> we can handel with custom. 1) create folder interceptors 2)create file
 
 ## RX Js
 that meanf handdel you thread or eventloop. instanece 
+
+## util.promisfy()
+this module change our old functio or any function to async awat autu

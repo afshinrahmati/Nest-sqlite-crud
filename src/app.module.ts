@@ -6,6 +6,7 @@ import { BooksModule } from './books/books.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/db/user.entity';
 import { Book } from './books/db/book.entity';
+import { AuthService } from './users/auth.service';
 @Module({
   imports: [
     TypeOrmModule.forRoot({

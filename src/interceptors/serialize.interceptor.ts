@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators';
 import { plainToClass } from 'class-transformer';
 import { ClassConstructor } from 'src/users/types/user-serialize';
 
+// Exculmn
 export function Serialize(dto: ClassConstructor) {
   return UseInterceptors(new SerializeInterCeptor(dto));
 }

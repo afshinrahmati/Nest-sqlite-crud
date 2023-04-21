@@ -118,3 +118,7 @@ that meanf handdel you thread or eventloop. instanece
 
 ## util.promisfy()
 this module change our old functio or any function to async awat autu
+
+## cookies
+it is a HTTP cookie is a smile piece of stored by user's browser to remmber stateful inforation 
+when user visit her website again the cookie is auto sent with request

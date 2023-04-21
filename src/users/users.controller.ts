@@ -14,6 +14,7 @@ import { UpdateUserDto } from './dtos/update-user.dto';
 import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { UserDto } from './dtos/user.dto';
 import { AuthService } from './auth.service';
+import { retry } from 'rxjs';
 
 @Controller('auth')
 export class UsersController {
@@ -24,6 +25,10 @@ export class UsersController {
   @Post('/signup')
   async createUser(@Body() body: CreateUserDto) {
     return this.authService.signup(body.email, body.password);
+  }
+  @Post('/signin')
+  async signup(@Body() body: CreateUserDto) {
+    return this.authService.signin(body.email, body.password);
   }
 
   @Get('?:id')
